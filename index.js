@@ -14,7 +14,7 @@ $(document).keydown(function(){
 
 $(document).click(function(){
     if (offSwitch) {
-         offSwitch = false;
+        offSwitch = false;
 
          nextSequence();
     }
@@ -38,15 +38,19 @@ function nextSequence() {
 };
 
 
-$('.btn').click(function() {
-    let userChosenColour = this.id;
+    $('.btn').click(function() {
+        if (offSwitch === false) {
+            let userChosenColour = this.id;
+    
+            userClickedPattern.push(userChosenColour);
+    
+            animatePress(userChosenColour);
+            playThisAudio(userChosenColour);
 
-    userClickedPattern.push(userChosenColour);
+            checkAnswer();
+        };    
 
-    animatePress(userChosenColour);
-    playThisAudio(userChosenColour);
-    checkAnswer();
-});
+    });
 
 
 
